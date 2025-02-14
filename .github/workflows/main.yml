@@ -1,4 +1,4 @@
-name: workflow Evento
+name: Workflow Evento
 on:
   workflow_dispatch:
     inputs:
@@ -6,11 +6,10 @@ on:
         type: string
         description: "Teste de Input"
         required: true
-  jobs:
-    teste:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Action de teste
-          run: |
-            echo "${{ inputs.exemplo-input }}"
-        
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Action de teste
+        run: |
+          echo "${{ github.event.inputs.exemplo-input }}"
