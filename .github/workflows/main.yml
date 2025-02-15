@@ -1,11 +1,19 @@
+# Nome do workflow (fluxo de trabalho)
 name: Workflow Evento
+
+# Define os eventos que irão disparar a execução do workflow
 on:
- push: 
-    branches: ["main", "feature/*"]
+  push:  # Irá executar quando houver um push (envio de código) para o repositório
+    tags:
+        - v*  
+
+# Define os jobs (tarefas) que compõem o workflow
 jobs:
-  teste:
-    runs-on: ubuntu-latest
+  teste:  # Nome do primeiro (e único) job
+    runs-on: ubuntu-latest  # Configura o job para rodar no ambiente do Ubuntu mais recente
+    
+    # Lista de passos (etapas) que o job irá executar sequencialmente
     steps:
-      - name: Action de teste
-        run: |
-          echo "Action executado apenas em MAIN e FEATURES"
+      - name: Action de teste  # Nome descritivo para a etapa
+        run: |  # Comandos que serão executados nessa etapa (no formato de script shell)
+          echo "Action executado apenas em MAIN e FEATURES"  # Comando simples que imprime uma mensagem
